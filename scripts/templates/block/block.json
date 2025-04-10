@@ -1,0 +1,15 @@
+{
+    "apiVersion": 2,
+    "name": "thstave/__BLOCK_NAME__",
+    "title": "__BLOCK_COMPONENT__ Block",
+    "category": "design",
+    "attributes": {
+      "title": { "type": "string" },
+      "subtitle": { "type": "string" },
+      "text": { "type": "string" },
+      "image": { "type": "string" }
+    },
+    "editorScript": "__BLOCK_NAME__-editor",
+    "script": "__BLOCK_NAME__-frontend"
+  }
+  

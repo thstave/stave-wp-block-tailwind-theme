@@ -1,0 +1,33 @@
+{
+  "name": "thstave-theme",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "buildwp": "wp-scripts build",
+    "buildblocks": "node ./scripts/build-blocks.js",
+    "watchblocks": "chokidar 'blocks/**/*.{js,jsx,json,css}' -c 'npm run buildblocks'",
+    "tailwindbuild": "tailwindcss -i ./src/style.css -o ./assets/css/tailwind.css --minify",
+    "tailwindwatch": "tailwindcss -i ./src/style.css -o ./assets/css/tailwind.css --watch",
+    "make:block": "node ./scripts/make-block.js",
+    "build": "npm-run-all --sequential buildwp buildblocks tailwindbuild",
+    "start": "npm-run-all --parallel watchblocks tailwindwatch buildwp"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.0.6",
+    "@tailwindcss/postcss": "^4.1.3",
+    "@tailwindcss/typography": "^0.5.16",
+    "@wordpress/scripts": "^30.14.1",
+    "npm-run-all": "^4.1.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^4.1.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.14",
+    "chokidar-cli": "^3.0.0",
+    "postcss": "^8.4.21",
+    "vite": "^6.2.5",
+    "vite-plugin-css-injected-by-js": "^3.5.2"
+  }
+}

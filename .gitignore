@@ -1,0 +1,15 @@
+# Node dependencies
+node_modules/
+
+# Build artifacts
+dist/
+assets/css/tailwind.css
+
+# IDE/editor configs
+.vscode/
+.DS_Store
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

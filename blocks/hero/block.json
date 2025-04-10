@@ -1,0 +1,14 @@
+{
+  "apiVersion": 2,
+  "name": "thstave/hero",
+  "title": "Hero Block",
+  "category": "design",
+  "attributes": {
+    "title": { "type": "string" },
+    "subtitle": { "type": "string" },
+    "text": { "type": "string" },
+    "image": { "type": "string" }
+  },
+  "editorScript": "hero-editor",
+  "script": "hero-frontend"
+}
