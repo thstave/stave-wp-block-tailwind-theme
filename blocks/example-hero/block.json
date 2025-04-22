@@ -1,7 +1,7 @@
 {
   "apiVersion": 2,
-  "name": "thstave/hero",
-  "title": "Hero Block",
+  "name": "thstave/example-hero",
+  "title": "Example Hero Block",
   "category": "design",
   "attributes": {
     "title": { "type": "string" },
@@ -9,6 +9,6 @@
     "text": { "type": "string" },
     "image": { "type": "string" }
   },
-  "editorScript": "hero-editor",
-  "script": "hero-frontend"
+  "editorScript": "example-hero-editor",
+  "script": "example-hero-frontend"
 }

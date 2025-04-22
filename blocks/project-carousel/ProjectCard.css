@@ -1,0 +1,74 @@
+.project-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5em;
+    background: var(--color-background, #1e1e1e);
+    box-shadow: 0 0.25em 0.75em rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    width: 24em;      /* consistent width */
+    height: 20em;     /* consistent total height */
+    max-width: 28em;  /* optional cap */
+    flex-shrink: 0;   /* Prevent slider from shrinking */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-0.375em); /* slight lift on hover */
+  }
+  
+  .project-card-image-wrapper {
+    flex: 1 1 auto;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .project-card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .project-card:hover .project-card-image {
+    transform: scale(1.05);
+  }
+  
+  /* Bottom area for title — always same height */
+  .project-card-title-wrapper {
+    flex: 0 0 4em; /* Fixed height for title area (~64px) */
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em 1em;
+    text-align: center;
+  }
+  
+  .project-card-title {
+    color: var(--color-heroText, #f1f1f1);
+    font-size: 1.25em;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .project-card-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #333;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+  }
+  

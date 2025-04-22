@@ -1,0 +1,42 @@
+/* Slider.css */
+
+/* Outer container: full width, hide overflow */
+.slider-outer {
+  width: auto;
+  overflow: hidden;
+  position: relative;
+  min-height: 250px;
+  box-sizing: border-box;
+}
+
+.slider-track {
+  display: flex;
+  will-change: transform;
+  width: auto;
+  min-height: 100%; 
+  box-sizing: border-box;
+}
+
+.slider-slide {
+  flex: 0 0 auto;
+  width: auto; 
+  max-width: 100%;
+  min-height: 100%; /* Make sure slides stretch to track height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  box-sizing: border-box;
+}
+
+/* When a slide is outside the visible range, you can optionally fade it */
+.slider-slide.inactive {
+  opacity: 0.25;
+}
+
+/* Optional: Add slight spacing at the ends if needed */
+.slider-outer::before,
+.slider-outer::after {
+  content: '';
+  flex: 0 0 auto;
+}

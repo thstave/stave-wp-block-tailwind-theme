@@ -1,10 +1,7 @@
-
+// scripts/build-blocks.js
 import { build } from 'vite';
 import path from 'path';
 import fs from 'fs';
-import react from '@vitejs/plugin-react';
-import cssInjected from 'vite-plugin-css-injected-by-js'; 
-
 
 const blocksDir = path.resolve('blocks');
 const blockFolders = fs.readdirSync(blocksDir).filter(name =>
@@ -19,7 +16,8 @@ const external = [
   '@wordpress/editor',
   '@wordpress/element',
   '@wordpress/i18n',
-  '@wordpress/components'
+  '@wordpress/components',
+  '@wordpress/data' 
 ];
 
 const globals = {
@@ -30,16 +28,21 @@ const globals = {
   '@wordpress/editor': 'wp.editor',
   '@wordpress/element': 'wp.element',
   '@wordpress/i18n': 'wp.i18n',
-  '@wordpress/components': 'wp.components'
+  '@wordpress/components': 'wp.components',
+  '@wordpress/data': 'wp.data' 
 };
 
-const buildBlock = async (name, entry, outputFile) => {
+
+const buildBlock = async (name, entry, outputFile, isEditor = false) => {
   const jsSafeName = name.replace(/[^a-zA-Z0-9_$]/g, '_');
 
+  console.log(`📦 Building ${outputFile}...`);
+
   await build({
-    configFile: false,
-    css: {
-      postcss: './postcss.config.js' // enables Tailwind + autoprefixer
+    configFile: 'vite.config.js', // Tell Vite to load plugins from here
+    mode: 'production',
+    define: {
+      'process.env.BLOCK_BUILD_TARGET': JSON.stringify(isEditor ? 'editor' : 'frontend'),
     },
     build: {
       emptyOutDir: false,
@@ -56,16 +59,8 @@ const buildBlock = async (name, entry, outputFile) => {
           globals
         }
       }
-    },
-    define: {
-      'process.env.NODE_ENV': JSON.stringify('production'),
-    },
-    plugins: [
-      react({ jsxRuntime: 'classic' }),
-      cssInjected() // Injects per-block CSS into JS bundle
-    ]
+    }
   });
-  
 };
 
 (async () => {
@@ -75,10 +70,10 @@ const buildBlock = async (name, entry, outputFile) => {
     const frontend = path.join(dir, 'frontend.jsx');
 
     if (fs.existsSync(editor)) {
-      await buildBlock(`${folder}-editor`, editor, `${folder}-editor.bundle.js`);
+      await buildBlock(`${folder}-editor`, editor, `${folder}-editor.bundle.js`, true);
     }
     if (fs.existsSync(frontend)) {
-      await buildBlock(`${folder}-frontend`, frontend, `${folder}-frontend.bundle.js`);
+      await buildBlock(`${folder}-frontend`, frontend, `${folder}-frontend.bundle.js`, false);
     }
   }
 })();

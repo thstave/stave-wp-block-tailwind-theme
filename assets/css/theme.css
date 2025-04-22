@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap');
+
+
+:root {
+  --color-background: #f1f1f1;
+  --color-text: #0e0e0e;
+  --color-heading: #635442;
+  --color-subtle: #403a31;
+  --color-accent: #b78d4d;
+  --color-accent-hover: #2f2f27;
+}
+
+/* Dark Theme */
+.dark-theme {
+  --color-background: #131513;
+  --color-text: #f1f1f1;
+  --color-heading: #b78d4d;
+  --color-subtle: #2f2f27;
+  --color-accent: #635442;
+  --color-accent-hover: #403a31;
+}
+
+/* Dark Soft Theme */
+.dark-soft-theme {
+  --color-background: #1A1B1A;
+  --color-text: #E5E5E5;
+  --color-heading: #b78d4d;
+  --color-subtle: #353634;
+  --color-accent: #7a6b57;
+  --color-accent-hover: #524a3f;
+}
+
+/* Lighter Dark Theme */
+.lighter-dark-theme {
+  --color-background: #222322;
+  --color-text: #e1e1e1;
+  --color-heading: #b78d4d;
+  --color-subtle: #3a3a36;
+  --color-accent: #92826d;
+  --color-accent-hover: #5c554d;
+}
+
+/* Mid-Dark Warm Theme */
+.mid-dark-warm-theme {
+  --color-background: #2F2E2C;
+  --color-text: #d8d5d0;
+  --color-heading: #b78d4d;
+  --color-subtle: #4b4742;
+  --color-accent: #8a7c66;
+  --color-accent-hover: #6e6352;
+}
+
+/* Midrange Neutral Theme */
+.midrange-neutral-theme {
+  --color-background: #333331;
+  --color-text: #ECECEC;
+  --color-heading: #b78d4d;
+  --color-subtle: #52524e;
+  --color-accent: #7c7c72;
+  --color-accent-hover: #5a5a52;
+}
+
+/* Midrange Cool Gray Theme */
+.midrange-cool-theme {
+  --color-background: #2A2B2D;
+  --color-text: #D1D5DB;
+  --color-heading: #b78d4d;
+  --color-subtle: #45484b;
+  --color-accent: #64748b;
+  --color-accent-hover: #475569;
+}
+
+/* Soft Light Warm Theme */
+.soft-light-warm-theme {
+  --color-background: #e7e4dd;
+  --color-text: #2f2f27;
+  --color-heading: #635442;
+  --color-subtle: #948e86;
+  --color-accent: #b78d4d;
+  --color-accent-hover: #93815b;
+}
+
+
+
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  margin-bottom: 0.5em;
+}
+
+a.button {
+  background-color: var(--color-accent);
+  color: var(--color-buttonText);
+}
+
+a.button:hover {
+  background-color: var(--color-accentHover);
+}

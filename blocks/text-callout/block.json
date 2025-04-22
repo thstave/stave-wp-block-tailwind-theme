@@ -1,0 +1,24 @@
+{
+    "apiVersion": 2,
+    "name": "thstave/text-callout",
+    "title": "TextCallout Block",
+    "category": "design",
+    "attributes": {
+      "title": {
+        "type": "string",
+        "default": ""
+      },
+      "text": {
+        "type": "string",
+        "default": ""
+      },
+      "height": {
+        "type": "string",
+        "default": "auto"  
+      },
+      "theme": { "type": "string", "default": "default" }
+    },
+    "editorScript": "text-callout-editor",
+    "script": "text-callout-frontend"
+  }
+  

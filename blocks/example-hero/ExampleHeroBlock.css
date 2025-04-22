@@ -1,0 +1,53 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--color-background);
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.5), transparent 60%);
+  z-index: 1;
+}
+
+.hero-text {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  z-index: 2;
+  max-width: 600px;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-heading);
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--font-size-lg);
+  font-weight: 400;
+  color: var(--color-heading);
+  margin-bottom: 0.5rem;
+}
+
+.hero-description {
+  font-size: 1.2rem;
+  color: var(--color-subtle);
+}
+

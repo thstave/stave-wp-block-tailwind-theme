@@ -1,4 +1,4 @@
-# 🧱 ThStave Block Skeleton
+# 🧱 Stave Wordpress Block Tailwind Skeleton
 
 A modern WordPress block-based theme starter powered by:
 
@@ -13,8 +13,8 @@ A modern WordPress block-based theme starter powered by:
 ## 🚀 Getting Started
 
 ```
-git clone https://github.com/your-org/thstave-theme.git
-cd thstave-theme
+git clone git clone https://github.com/thstave/stave-wp-block-tailwind-theme.git
+cd stave-wp-block-tailwind-theme
 npm install
 npm run build
 ```
@@ -96,7 +96,7 @@ This will:
 Here’s how this theme is organized:
 
 ```
-thstave-theme/
+(theme-directory)-theme/
 ├── assets/
 │   └── css/
 │       └── tailwind.css              # Output from Tailwind

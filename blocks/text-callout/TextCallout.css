@@ -1,0 +1,32 @@
+.textcallout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  width: 100%;
+  height: 33vh;
+  background-color: var(--color-background);
+}
+
+.textcallout .container {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.textcallout h2 {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--color-heading );
+}
+
+.textcallout p {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--color-text);
+}

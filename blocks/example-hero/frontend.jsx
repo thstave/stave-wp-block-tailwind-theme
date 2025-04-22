@@ -1,11 +1,12 @@
 import { createRoot } from 'react-dom/client';
-import HeroBlock from './HeroBlock.jsx';
+import ExampleHeroBlock from './ExampleHeroBlock.jsx';
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-block="hero"]').forEach((el) => {
-    console.log(el);
+
+  document.querySelectorAll('[data-block="example-hero"]').forEach((el) => {
+
     const attrs = JSON.parse(atob(el.dataset.attributes));
     const root = createRoot(el);
-    root.render(<HeroBlock {...attrs} />);
+    root.render(<ExampleHeroBlock {...attrs} />);
   });
 });

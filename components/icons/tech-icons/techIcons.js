@@ -1,0 +1,30 @@
+const techIcons = {
+    React: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
+    Vue: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg',
+    Nodejs: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
+    TailwindCSS: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg',
+    WordPress: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg',
+    PHP: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',
+    Python: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+    JavaScript: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+    CSS: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
+    SCSS: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg',
+    PostgreSQL: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
+    MySQL: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
+    MSSQL: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg',
+    Java: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
+    SpringFramework: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg',
+    Angular: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg',
+    CouchDB: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/couchdb/couchdb-original.svg',
+    PouchDB: 'https://pouchdb.com/img/pouchdb.svg',
+    Redis: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg',
+    MongoDB: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
+    C: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg',
+    'C++': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
+    'C#': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg',
+    Pascal: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Dev-Pascal-Icon.png',
+    JQuery: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg',
+  };
+  
+  export default techIcons;
+  

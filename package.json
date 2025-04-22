@@ -1,32 +1,27 @@
 {
-  "name": "thstave-theme",
+  "name": "stave-wb-block-tailwind-theme",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "buildwp": "wp-scripts build",
-    "buildblocks": "node ./scripts/build-blocks.js",
-    "watchblocks": "chokidar 'blocks/**/*.{js,jsx,json,css}' -c 'npm run buildblocks'",
-    "tailwindbuild": "tailwindcss -i ./src/style.css -o ./assets/css/tailwind.css --minify",
-    "tailwindwatch": "tailwindcss -i ./src/style.css -o ./assets/css/tailwind.css --watch",
+    "buildblocks": "cross-env NODE_ENV=production node ./scripts/build-blocks.js",
+    "watchblocks": "cross-env NODE_ENV=development chokidar '{blocks,components,assets/css}/**/*.{js,jsx,json,css}' -c 'npm run buildblocks'",
     "make:block": "node ./scripts/make-block.js",
-    "build": "npm-run-all --sequential buildwp buildblocks tailwindbuild",
-    "start": "npm-run-all --parallel watchblocks tailwindwatch buildwp"
-  },
+    "build": "npm-run-all --sequential buildwp buildblocks",
+    "start": "npm-run-all --parallel watchblocks buildwp"
+  },  
   "dependencies": {
-    "@tailwindcss/cli": "^4.0.6",
-    "@tailwindcss/postcss": "^4.1.3",
-    "@tailwindcss/typography": "^0.5.16",
-    "@wordpress/scripts": "^30.14.1",
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@wordpress/scripts": "^30.7.0",
     "npm-run-all": "^4.1.5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tailwindcss": "^4.1.3"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.4",
-    "autoprefixer": "^10.4.14",
+    "@vitejs/plugin-react": "^4.4.1",
     "chokidar-cli": "^3.0.0",
-    "postcss": "^8.4.21",
+    "cross-env": "^7.0.3",
     "vite": "^6.2.5",
     "vite-plugin-css-injected-by-js": "^3.5.2"
   }

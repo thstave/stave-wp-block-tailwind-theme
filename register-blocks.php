@@ -5,7 +5,7 @@
  * Assumes styles are injected via JS (no separate .css files).
  */
 
-function thstave_register_all_blocks() {
+function stave_register_all_blocks() {
   $theme_dir = get_template_directory();
   $theme_uri = get_template_directory_uri();
   $blocks_dir = $theme_dir . '/blocks/';
@@ -27,12 +27,10 @@ function thstave_register_all_blocks() {
       continue;
     }
 
-    // === Register JS scripts ===
+
     foreach (['editorScript', 'script'] as $key) {
       if (!empty($metadata[$key])) {
-        error_log("✅ Registered script key: $key");
         $handle = $metadata[$key];
-        error_log("✅ Registered script handle: $handle");
         $js_path = $dist_dir . $handle . '.bundle.js';
         $js_uri  = $dist_uri . $handle . '.bundle.js';
 
@@ -55,13 +53,13 @@ function thstave_register_all_blocks() {
       }
     }
 
-    // === Optional: load render.php or use default hydration ===
     $render_php = $block_path . '/render.php';
     $render_callback = null;
 
     if (file_exists($render_php)) {
       $render_callback = include $render_php;
     } else {
+      
       $render_callback = function($attributes) use ($block_name) {
         return sprintf(
           '<div data-block="%s" data-attributes="%s"></div>',
@@ -70,9 +68,9 @@ function thstave_register_all_blocks() {
         );
       };
     }
-    error_log("block_json_path: $block_json_path");
-    // === Register the block with scripts attached ===
-    register_block_type('thstave/hero', [
+   
+    error_log("relative_block_path: " . $metadata['name']);
+    register_block_type($metadata['name'], [
       'editor_script'   => $metadata['editorScript'] ?? null,
       'script'          => $metadata['script'] ?? null,
       'render_callback' => $render_callback,
@@ -81,4 +79,4 @@ function thstave_register_all_blocks() {
   }
 }
 
-add_action('init', 'thstave_register_all_blocks');
+add_action('init', 'stave_register_all_blocks');

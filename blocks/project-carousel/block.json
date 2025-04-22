@@ -1,0 +1,15 @@
+{
+  "apiVersion": 2,
+  "name": "thstave/project-carousel",
+  "title": "Project Carousel",
+  "category": "design",
+  "attributes": {
+    "title": { "type": "string" },
+    "subtitle": { "type": "string" },
+    "height": {"type": "string"},
+    "theme": { "type": "string" },
+    "slideTheme": { "type": "string" }
+  },
+  "editorScript": "project-carousel-editor",
+  "script": "project-carousel-frontend"
+}

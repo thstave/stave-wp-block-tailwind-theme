@@ -13,14 +13,13 @@ import {
   Button
 } from '@wordpress/components';
 
-console.log('✅ Hero Block Edit.jsx loaded');
 
 const Edit = ({ attributes, setAttributes }) => {
   const { title, subtitle, text, image } = attributes;
-  console.log('✅ Hero Block Edit.jsx called');
-  // ✅ Gives WP editor the ability to detect/select the block
+ 
+  // Gives WP editor the ability to detect/select the block
   const blockProps = useBlockProps({
-    className: 'thstave-hero-block bg-gray-800 text-white p-4',
+    className: 'stave-hero-block bg-gray-800 text-white p-4',
     style: {
       minHeight: '200px',
       position: 'relative'
