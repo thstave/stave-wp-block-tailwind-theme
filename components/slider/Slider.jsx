@@ -32,32 +32,32 @@ const Slider = forwardRef(
 
     const wrapperRef = useRef(null);
     const firstSlideRef = useRef(null);
-    let gapWidth = minSpace;
+    const [gapWidth, setGapWidth] = useState(minSpace);
 
-    // const calculateGapWidth = (count, containerWidth, width) => {
-    //   console.log("calculateSlideWidth", { count, containerWidth, width });
-    //   // gap, in-between space-around
-    //   let whitespaceSize;
-    //   let returnWidth = width;
-    //   switch (type) {
-    //     case "gap":
-    //       returnWidth = parseCssUnitToPixels(gap, containerWidth);
-    //       break;
-    //     case "in-between":
-    //       whitespaceSize = containerWidth - count * width;
-    //       returnWidth = whitespaceSize / (count - 1) + width;
-    //       console.log("in-between", { whitespaceSize, returnWidth });
-    //       break;
-    //     case "space-around":
-    //       whitespaceSize = containerWidth - count * width;
-    //       returnWidth = whitespaceSize / (count + 1) + width;
-    //       break;
-    //     default:
-    //       returnWidth = minSpace;
-    //       break;
-    //   }
-    //   return returnWidth;
-    // };
+    const calculateGapWidth = (count, containerWidth, width) => {
+      console.log("calculateSlideWidth", { count, containerWidth, width });
+      // gap, in-between space-around
+      let whitespaceSize;
+      let returnWidth = width;
+      switch (type) {
+        case "gap":
+          returnWidth = parseCssUnitToPixels(gap, containerWidth);
+          break;
+        case "in-between":
+          whitespaceSize = containerWidth - count * width;
+          returnWidth = whitespaceSize / (count - 1) ;
+          console.log("in-between", { whitespaceSize, returnWidth, count, width });
+          break;
+        case "space-around":
+          whitespaceSize = containerWidth - count * width;
+          returnWidth = whitespaceSize / (count + 1) + width;
+          break;
+        default:
+          returnWidth = minSpace;
+          break;
+      }
+      return returnWidth;
+    };
 
     const calculateWidths = (containerWidth, minSpace) => {
       if (!firstSlideRef.current) return { slideWidth: 0, gapWidth: minSpace };
@@ -67,38 +67,12 @@ const Slider = forwardRef(
       const maxSlides = Math.floor((containerWidth + minSpace) / (elementWidth + minSpace));
     
       if (maxSlides < 1) return { slideWidth: elementWidth, gapWidth: minSpace };
+
+      const trueGap = calculateGapWidth( maxSlides, containerWidth, elementWidth );
     
-      const totalGapSpace = containerWidth - maxSlides * elementWidth;
-      const trueGap = maxSlides > 1 ? totalGapSpace / (maxSlides - 1) : 0;
-    
-      return { slideWidth: elementWidth, gapWidth: trueGap };
+      return { slideWidth: elementWidth, gapWidth: trueGap, slideCount: maxSlides };
     };
     
-
-    // const handleResize = () => {
-    //   const wrapper = wrapperRef.current;
-    //   const firstSlide = firstSlideRef.current?.firstElementChild;
-    //   if (!wrapper || !firstSlide || !(firstSlide instanceof Element)) return;
-
-    //   const containerWidth = wrapper.clientWidth;
-    //   let width = measureElementWidth(firstSlide, containerWidth);
-
-    //   if (width === 0) {
-    //     console.warn('⚠️ Slider detected 0px width, retrying...');
-    //     setTimeout(handleResize, 100); // Retry after 100ms
-    //     return;
-    //   }
-
-    //   const count = Math.max(
-    //     1,
-    //     Math.floor((containerWidth + minSpace) / (width + minSpace))
-    //   );
-    //   gapWidth = calculateGapWidth(count, containerWidth, width);
-
-    //   setVisibleCount(count);
-    //   setSlideWidth(width);
-    //   debug && console.log("📐 Resized", { containerWidth, width, count });
-    // };
 
     const handleResize = () => {
       console.log("Inside handleResize");
@@ -107,7 +81,7 @@ const Slider = forwardRef(
       if (!wrapper || !firstSlide || !(firstSlide instanceof Element)) return;
     
       const containerWidth = wrapper.clientWidth;
-      const { slideWidth: calculatedWidth, gapWidth: calculatedGap } = calculateWidths(containerWidth, minSpace);
+      const { slideWidth: calculatedWidth, gapWidth: calculatedGap, slideCount: count } = calculateWidths(containerWidth, minSpace);
       console.log("container width : ", containerWidth);
       console.log("widths : ", { slideWidth: calculatedWidth, gapWidth: calculatedGap });
     
@@ -117,12 +91,8 @@ const Slider = forwardRef(
         return;
       }
     
-      const count = Math.max(
-        1,
-        Math.floor((containerWidth + minSpace) / (calculatedWidth + minSpace))
-      );
-    
-      gapWidth = calculatedGap;
+      setGapWidth(calculatedGap);
+      console.log("gapWidth:", gapWidth, "count", count);
     
       setVisibleCount(count);
       setSlideWidth(calculatedWidth);
@@ -168,9 +138,9 @@ const Slider = forwardRef(
     const slideOffset = -(currentIndex * (slideWidth + gapWidth));
 
     return (
-      <div className="slider-outer" >
+      <div className="slider-outer" ref={wrapperRef} >
         <div
-        ref={wrapperRef}
+        
           className="slider-track"
           style={{
             transform: `translateX(${slideOffset}px)`,
