@@ -1,65 +1,134 @@
+/* Root variables for card width and arrow position */
+:root {
+  --card-width: 24em;      /* Default card width (desktop) */
+  --arrow-offset: -4.5em;   /* Default arrow offset (desktop) */
+}
+
+/* Tablet adjustments */
+@media (max-width: 1024px) {
+  :root {
+    --card-width: 20em;
+    --arrow-offset: -3.5em;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  :root {
+    --card-width: 90vw;
+    --arrow-offset: -2em;
+  }
+
+  .slider-arrow {
+    font-size: 2em; /* Slightly smaller arrows on mobile */
+  }
+}
+
+/* Slide appearance animation */
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Main Project Carousel block */
 .projects-block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 33vh;
-    background-color: var(--color-background);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 33vh;
+  background-color: var(--color-background);
 }
 
+/* Inner container */
 .projects-block .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 100%;         
-    max-width: 1300px;     
-    box-sizing: border-box; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  max-width: 1300px;
+  box-sizing: border-box;
+  height: 100%;
 }
 
-.projects-block .container .projects-subtitle {
-    max-width: 800px;
-    color:  var(--color-text);
-    text-align: center;
-    margin-bottom: 3em;
-    position: relative;
+/* Title */
+.projects-title {
+  margin: 0;
+  font-size: 2em;
+  font-weight: bold;
+  color: var(--color-text);
+  text-align: center;
 }
 
-.projects-block .container .projects-slider-wrapper {
-    padding: 2em;
-    width: 100%;             
-    max-width: 1200px;        
-    margin: 0 auto;
-    box-sizing: border-box;  
-    position: relative;
+/* Subtitle */
+.projects-subtitle {
+  max-width: 800px;
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: 2em;
+  position: relative;
 }
 
+/* Wrapper around the slider */
+.projects-slider-wrapper {
+  padding: 2em;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  position: relative;
+  height: 50%;
+}
+
+/* Arrows shared styles */
 .slider-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: var(--color-accent, #b78d4d);
-    font-size: 2em;
-    cursor: pointer;
-    padding: 0.5em;
-    z-index: 10;
-    transition: color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .slider-arrow.left {
-    left: -1em; /* Adjust if needed */
-  }
-  
-  .slider-arrow.right {
-    right: -1em; /* Adjust if needed */
-  }
-  
-  .slider-arrow:hover {
-    color: var(--color-accent-hover, #d1aa60);
-    transform: translateY(-50%) scale(1.2);
-  }
-  
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--color-accent, #b78d4d);
+  font-size: 3.5em;
+  cursor: pointer;
+  padding: 0.5em;
+  z-index: 10;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Left and Right arrows */
+.slider-arrow.left {
+  left: var(--arrow-offset);
+}
+
+.slider-arrow.right {
+  right: var(--arrow-offset);
+}
+
+/* Arrow hover effect */
+.slider-arrow:hover {
+  color: var(--color-accent-hover, #d1aa60);
+  transform: translateY(-50%) scale(1.2);
+}
+
+/* Individual slider slides (injected by SliderPanel) */
+.slider-slide {
+  flex: 0 0 auto;
+  width: auto;
+  max-width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  animation: slideFadeIn 0.5s ease both;
+  box-sizing: border-box;
+}

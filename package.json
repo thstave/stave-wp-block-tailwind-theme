@@ -8,11 +8,13 @@
     "watchblocks": "cross-env NODE_ENV=development chokidar '{blocks,components,assets/css}/**/*.{js,jsx,json,css}' -c 'npm run buildblocks'",
     "make:block": "node ./scripts/make-block.js",
     "build": "npm-run-all --sequential buildwp buildblocks",
-    "start": "npm-run-all --parallel watchblocks buildwp"
-  },  
+    "start": "npm-run-all --parallel watchblocks buildwp",
+    "clean": "rm -rf node_modules && rm package-lock.json && rm -rf dist && npm install"
+  },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/sortable": "^10.0.0",
+    "@thstave/stave-slider-panel": "^1.0.11",
     "@wordpress/scripts": "^30.7.0",
     "npm-run-all": "^4.1.5",
     "react": "^18.2.0",

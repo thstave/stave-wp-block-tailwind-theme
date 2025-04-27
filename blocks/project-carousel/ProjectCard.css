@@ -3,13 +3,11 @@
     overflow: hidden;
     border-radius: 0.5em;
     background: var(--color-background, #1e1e1e);
-    box-shadow: 0 0.25em 0.75em rgba(0, 0, 0, 0.25);
     cursor: pointer;
     transition: transform 0.3s ease;
-    width: 24em;      /* consistent width */
-    height: 20em;     /* consistent total height */
-    max-width: 28em;  /* optional cap */
-    flex-shrink: 0;   /* Prevent slider from shrinking */
+    width: 26em;   
+    height: 20em;     
+    max-width: 26em;  
     display: flex;
     flex-direction: column;
   }

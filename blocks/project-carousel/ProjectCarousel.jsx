@@ -1,7 +1,7 @@
 // blocks/project-carousel/ProjectCarousel.jsx
 import React, { useEffect, useState, useRef } from 'react';
 import ProjectCard from './ProjectCard';
-import Slider from '../../components/slider/Slider';
+import { SliderPanel } from '@thstave/stave-slider-panel';
 import './ProjectCarousel.css';
 import ArrowLeft from '../../components/icons/ArrowLeft';
 import ArrowRight from '../../components/icons/ArrowRight';
@@ -16,6 +16,11 @@ const ProjectCarousel = ({ title, subtitle, height, theme, selectedProjects, sli
         const response = await fetch('/wp-json/wp/v2/project?per_page=100&_embed');
         const data = await response.json();
         setProjects(data);
+
+        // 🔥 Important: allow next frame for React to apply setState
+        setTimeout(() => {
+          sliderRef.current?.reload?.();
+        }, 0);
       } catch (error) {
         console.error('Error fetching projects:', error);
       }
@@ -30,7 +35,6 @@ const ProjectCarousel = ({ title, subtitle, height, theme, selectedProjects, sli
       .filter(Boolean)
     : projects;
 
-  // Build array of ProjectCard components
   const projectSlides = displayedProjects.map((project) => {
     const imageUrl = project?._embedded?.['wp:featuredmedia']?.[0]?.source_url || '';
     const projectTitle = project?.meta?._project_name || project?.title?.rendered || 'Untitled';
@@ -54,37 +58,35 @@ const ProjectCarousel = ({ title, subtitle, height, theme, selectedProjects, sli
         {subtitle && <p className="projects-subtitle">{subtitle}</p>}
 
         <div className="projects-slider-wrapper">
-
           <ArrowLeft
-            onClick={() => sliderRef.current.previous()}
+            onClick={() => sliderRef.current?.previous()}
             size="3.5em"
             leftPos="-4.5em"
             color="var(--color-accent)"
             hoverColor="var(--color-accent-hover)"
-            disabled={false}
+            disabled={false} // (Optional) Replace with sliderRef.current?.getHasPrevious() === false
           />
 
-          <Slider
+          <SliderPanel
             ref={sliderRef}
             dataList={projectSlides}
-            type="in-between"
+            justify="space-around" 
+            minSpace={28}
             gap="24px"
-            minSpace={24}
-            debug={true}
+            debug={false} 
           />
 
           <ArrowRight
-            onClick={() => sliderRef.current.next()}
+            onClick={() => sliderRef.current?.next()}
             size="3.5em"
             rightPos="-4.5em"
             color="var(--color-accent)"
             hoverColor="var(--color-accent-hover)"
-            disabled={false}
+            disabled={false} // (Optional) Replace with sliderRef.current?.getHasNext() === false
           />
         </div>
       </div>
-    </section >
-
+    </section>
   );
 };
 
