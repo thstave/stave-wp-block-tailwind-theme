@@ -4,31 +4,31 @@
     align-items: center;
     justify-content: center;
     border-radius: 0.75em;
-    padding: 1em;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
+    background-color: var(--color-background);
+    color: var(--color-text);
     max-width: 8em;
-    background-color: #1e1e1e;
-    color: #ffffff;
+    position: relative;
   }
   
   .technology-card.with-shadow {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); */
   }
   
   .technology-card.hover-effect:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
   }
   
   .technology-icon {
-    width: 4em;
-    height: 4em;
-    margin-bottom: 0.5em;
+    /* width and height removed! */
     object-fit: contain;
   }
   
   .technology-label {
+    position: absolute;
     font-size: 0.9em;
     font-weight: bold;
+    bottom: -.5em;
   }
   

@@ -1,0 +1,14 @@
+{
+    "apiVersion": 2,
+    "name": "thstave/tech-icons",
+    "title": "TechIcons Block",
+    "category": "design",
+    "attributes": {
+      "title": { "type": "string" },
+      "theme": { "type": "string" },
+      "responsiveHeight": { "type": "string"}
+    },
+    "editorScript": "tech-icons-editor",
+    "script": "tech-icons-frontend"
+  }
+  

@@ -3,6 +3,7 @@ import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, TextControl, SelectControl } from '@wordpress/components';
 import CPTSortableSelectControl from '../../components/CPTSortableSelectControl';
 import ProjectCarousel from './ProjectCarousel';
+import ThemeSelector from '../../components/ThemeSelector';
 
 const Edit = ({ attributes, setAttributes }) => {
   const { title, subtitle, height, theme, slideTheme } = attributes;
@@ -52,38 +53,14 @@ const Edit = ({ attributes, setAttributes }) => {
             ]}
             onChange={(val) => setAttributes({ height: val })}
           />
-          <SelectControl
-            __nextHasNoMarginBottom={true}
-            __next40pxDefaultSize={true}
-            label="Select Theme"
+
+<ThemeSelector
             value={theme}
-            options={[
-              { label: 'Default (Light)', value: '' },
-              { label: 'Dark Theme', value: 'dark-theme' },
-              { label: 'Dark Soft Theme', value: 'dark-soft-theme' },
-              { label: 'Lighter Dark Theme', value: 'lighter-dark-theme' },
-              { label: 'Mid-Dark Warm Theme', value: 'mid-dark-warm-theme' },
-              { label: 'Midrange Neutral Theme', value: 'midrange-neutral-theme' },
-              { label: 'Midrange Cool Gray Theme', value: 'midrange-cool-theme' },
-              { label: 'Soft Light Warm Theme', value: 'soft-light-warm-theme' }
-            ]}
             onChange={(val) => setAttributes({ theme: val })}
           />
-          <SelectControl
-            __nextHasNoMarginBottom={true}
-            __next40pxDefaultSize={true}
-            label="Select Slide Theme"
+          <ThemeSelector
+            label="Choose Slide Color Palette"
             value={slideTheme}
-            options={[
-              { label: 'Default (Light)', value: '' },
-              { label: 'Dark Theme', value: 'dark-theme' },
-              { label: 'Dark Soft Theme', value: 'dark-soft-theme' },
-              { label: 'Lighter Dark Theme', value: 'lighter-dark-theme' },
-              { label: 'Mid-Dark Warm Theme', value: 'mid-dark-warm-theme' },
-              { label: 'Midrange Neutral Theme', value: 'midrange-neutral-theme' },
-              { label: 'Midrange Cool Gray Theme', value: 'midrange-cool-theme' },
-              { label: 'Soft Light Warm Theme', value: 'soft-light-warm-theme' }
-            ]}
             onChange={(val) => setAttributes({ slideTheme: val })}
           />
 

@@ -69,4 +69,11 @@
     justify-content: center;
     font-size: 1em;
   }
+
+  @media (max-width: 768px) {
+    .project-card {
+      width: 90vw;   /* instead of 26em */
+      height: 18em;  /* maybe smaller height too */
+    }
+  }
   
