@@ -6,7 +6,7 @@ import './ProjectCarousel.css';
 import ArrowLeft from '../../components/icons/ArrowLeft';
 import ArrowRight from '../../components/icons/ArrowRight';
 
-const ProjectCarousel = ({ title, subtitle, height, theme, selectedProjects, slideTheme }) => {
+const ProjectCarousel = ({ title, subtitle, responsiveHeight, theme, selectedProjects, slideTheme, justify }) => {
   const [projects, setProjects] = useState([]);
   const sliderRef = useRef(null);
 
@@ -17,7 +17,7 @@ const ProjectCarousel = ({ title, subtitle, height, theme, selectedProjects, sli
         const data = await response.json();
         setProjects(data);
 
-        // 🔥 Important: allow next frame for React to apply setState
+        // Important: allow next frame for React to apply setState
         setTimeout(() => {
           sliderRef.current?.reload?.();
         }, 0);
@@ -52,38 +52,38 @@ const ProjectCarousel = ({ title, subtitle, height, theme, selectedProjects, sli
   });
 
   return (
-    <section className={`projects-block ${theme}`} style={{ height }}>
+    <section className={`projects-block ${theme} ${responsiveHeight}`}>
       <div className="container">
         {title && <h2 className="projects-title">{title}</h2>}
         {subtitle && <p className="projects-subtitle">{subtitle}</p>}
 
         <div className="projects-slider-wrapper">
-          <ArrowLeft
-            onClick={() => sliderRef.current?.previous()}
-            size="3.5em"
-            leftPos="-4.5em"
-            color="var(--color-accent)"
-            hoverColor="var(--color-accent-hover)"
-            disabled={false} // (Optional) Replace with sliderRef.current?.getHasPrevious() === false
-          />
+          <div className="slider-inner-wrapper">
+            <ArrowLeft
+              onClick={() => sliderRef.current?.previous()}
+              size="3.5em"
+              color="var(--color-accent)"
+              hoverColor="var(--color-accent-hover)"
+              disabled={false}
+            />
 
-          <SliderPanel
-            ref={sliderRef}
-            dataList={projectSlides}
-            justify="space-around" 
-            minSpace={28}
-            gap="24px"
-            debug={false} 
-          />
+            <SliderPanel
+              ref={sliderRef}
+              dataList={projectSlides}
+              justify={justify}
+              minSpace={28}
+              gap="24px"
+              debug={false}
+            />
 
-          <ArrowRight
-            onClick={() => sliderRef.current?.next()}
-            size="3.5em"
-            rightPos="-4.5em"
-            color="var(--color-accent)"
-            hoverColor="var(--color-accent-hover)"
-            disabled={false} // (Optional) Replace with sliderRef.current?.getHasNext() === false
-          />
+            <ArrowRight
+              onClick={() => sliderRef.current?.next()}
+              size="3.5em"
+              color="var(--color-accent)"
+              hoverColor="var(--color-accent-hover)"
+              disabled={false}
+            />
+          </div>
         </div>
       </div>
     </section>

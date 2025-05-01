@@ -6,9 +6,10 @@
   "attributes": {
     "title": { "type": "string" },
     "subtitle": { "type": "string" },
-    "height": {"type": "string"},
+    "responsiveHeight": {"type": "string"},
     "theme": { "type": "string" },
-    "slideTheme": { "type": "string" }
+    "slideTheme": { "type": "string" },
+    "justify": { "type": "string" }
   },
   "editorScript": "project-carousel-editor",
   "script": "project-carousel-frontend"

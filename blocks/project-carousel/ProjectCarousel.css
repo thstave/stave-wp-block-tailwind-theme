@@ -18,10 +18,6 @@
     --card-width: 90vw;
     --arrow-offset: -2em;
   }
-
-  .slider-arrow {
-    font-size: 2em; /* Slightly smaller arrows on mobile */
-  }
 }
 
 /* Slide appearance animation */
@@ -43,7 +39,6 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 33vh;
   background-color: var(--color-background);
 }
 
@@ -89,11 +84,18 @@
   height: 50%;
 }
 
+/* Inner wrapper to control arrows and slider layout */
+.slider-inner-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
 /* Arrows shared styles */
 .slider-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   background: none;
   border: none;
   color: var(--color-accent, #b78d4d);
@@ -104,19 +106,25 @@
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
-/* Left and Right arrows */
+/* Left and Right arrows in desktop view */
 .slider-arrow.left {
+  position: absolute;
   left: var(--arrow-offset);
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .slider-arrow.right {
+  position: absolute;
   right: var(--arrow-offset);
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 /* Arrow hover effect */
 .slider-arrow:hover {
   color: var(--color-accent-hover, #d1aa60);
-  transform: translateY(-50%) scale(1.2);
+  transform: scale(1.2);
 }
 
 /* Individual slider slides (injected by SliderPanel) */
@@ -131,4 +139,40 @@
   transition: opacity 0.5s ease, transform 0.5s ease;
   animation: slideFadeIn 0.5s ease both;
   box-sizing: border-box;
+}
+
+/* --- TABLET (<1024px) adjustments --- */
+@media (max-width: 1024px) {
+  .slider-inner-wrapper {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .slider-arrow.left,
+  .slider-arrow.right {
+    position: static;
+    transform: none;
+    order: 2;
+    font-size: 2.5em; /* Smaller arrows */
+    margin: 0 0.5rem;
+  }
+
+  .slider-inner-wrapper > .slider-arrow {
+    display: inline-flex;
+  }
+
+  .projects-slider-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* --- PHONE (<768px) adjustments --- */
+@media (max-width: 768px) {
+  .slider-arrow.left,
+  .slider-arrow.right {
+    font-size: 2em; /* Even smaller arrows */
+    margin: 0 0.25rem; 
+  }
 }

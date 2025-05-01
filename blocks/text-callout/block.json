@@ -12,9 +12,9 @@
         "type": "string",
         "default": ""
       },
-      "height": {
+      "responsiveHeight": {
         "type": "string",
-        "default": "auto"  
+        "default": ""  
       },
       "theme": { "type": "string", "default": "default" }
     },

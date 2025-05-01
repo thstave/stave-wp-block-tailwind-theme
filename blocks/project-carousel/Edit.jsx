@@ -4,9 +4,10 @@ import { PanelBody, TextControl, SelectControl } from '@wordpress/components';
 import CPTSortableSelectControl from '../../components/CPTSortableSelectControl';
 import ProjectCarousel from './ProjectCarousel';
 import ThemeSelector from '../../components/ThemeSelector';
+import ResponsiveHeightSelector from '../../components/ResponsiveHeightSelector';
 
 const Edit = ({ attributes, setAttributes }) => {
-  const { title, subtitle, height, theme, slideTheme } = attributes;
+  const { title, subtitle, responsiveHeight, theme, slideTheme, justify } = attributes;
 
   const blockProps = useBlockProps({
     className: 'projects-block-edit'
@@ -30,31 +31,31 @@ const Edit = ({ attributes, setAttributes }) => {
             value={subtitle}
             onChange={(val) => setAttributes({ subtitle: val })}
           />
+          <SelectControl
+            __nextHasNoMarginBottom={true}
+            __next40pxDefaultSize={true}
+            label="Justify Cards"
+            value={justify}
+            options={[
+              { label: 'Space Between', value: 'space-between' },
+              { label: 'Space Around', value: 'space-around' },
+              { label: 'Gap', value: 'gap' },
+            ]}
+            onChange={(val) => setAttributes({ justify: val })}
+          />
           <CPTSortableSelectControl
             postType="project"
             label="Select and Order Projects"
             value={attributes.selectedProjects}
             onChange={(val) => setAttributes({ selectedProjects: val })}
           />
-          <SelectControl
-            __nextHasNoMarginBottom={true}
-            __next40pxDefaultSize={true}
-            label="Select Height"
-            value={height}
-            options={[
-              { label: 'Select a height', value: '' },
-              { label: '25%', value: '25vh' },
-              { label: '33%', value: '33.3vh' },
-              { label: '50%', value: '50vh' },
-              { label: '66%', value: '66.6vh' },
-              { label: '75%', value: '75vh' },
-              { label: '100%', value: '100vh' },
-              { label: 'Auto', value: 'auto' }
-            ]}
-            onChange={(val) => setAttributes({ height: val })}
+
+          <ResponsiveHeightSelector
+            value={responsiveHeight}
+            onChange={(val) => setAttributes({ responsiveHeight: val })}
           />
 
-<ThemeSelector
+          <ThemeSelector
             value={theme}
             onChange={(val) => setAttributes({ theme: val })}
           />
@@ -70,9 +71,10 @@ const Edit = ({ attributes, setAttributes }) => {
       <ProjectCarousel
         title={title}
         subtitle={subtitle}
-        height={height}
+        responsiveHeight={responsiveHeight}
         theme={theme}
-        slideTheme = {slideTheme}
+        slideTheme={slideTheme}
+        justify={justify}
       />
     </div>
   );

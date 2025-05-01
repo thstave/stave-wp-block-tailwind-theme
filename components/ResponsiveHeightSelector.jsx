@@ -5,20 +5,20 @@ const HEIGHT_OPTIONS = [
   { label: 'Not Set', value: 'unset' },
   { label: 'Auto', value: 'auto' },
   { label: '25%', value: '25vh' },
-  { label: '33%', value: '33.3vh' },
+  { label: '33%', value: '33vh' },
   { label: '50%', value: '50vh' },
-  { label: '66%', value: '66.6vh' },
+  { label: '66%', value: '66vh' },
   { label: '75%', value: '75vh' },
   { label: '100%', value: '100vh' },
 ];
 
 const BREAKPOINTS = [
-  { key: 'lg', prefix: 'lg:', label: 'Large', query: '≥1024px' },
-  { key: 'md', prefix: 'md:', label: 'Medium', query: '≥768px' },
-  { key: 'sm', prefix: 'sm:', label: 'Small', query: '≥640px' },
-  { key: 'xs', prefix: '', label: 'Base', query: '(default)' },
+    { key: 'xs', prefix: '', label: 'Base', query: '(default)' },
+    { key: 'sm', prefix: 'sm:', label: 'Small', query: '≥640px' },
+    { key: 'md', prefix: 'md:', label: 'Medium', query: '≥768px' },
+    { key: 'lg', prefix: 'lg:', label: 'Large', query: '≥1024px' },
 ];
-
+  
 // Parse the saved string value into an object structure
 const parseValueToObject = (str) => {
   const parsed = str
