@@ -1,41 +1,41 @@
-// blocks/project-carousel/ProjectCarousel.jsx
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import ProjectCard from './ProjectCard';
 import { SliderPanel } from '@thstave/stave-slider-panel';
-import './ProjectCarousel.css';
 import ArrowLeft from '../../components/icons/ArrowLeft';
 import ArrowRight from '../../components/icons/ArrowRight';
+import { useCustomPostsRecords } from '../../components/CustomPostHooks';
+import './ProjectCarousel.css';
 
-const ProjectCarousel = ({ title, subtitle, responsiveHeight, theme, selectedProjects, slideTheme, justify }) => {
-  const [projects, setProjects] = useState([]);
+/**
+ * ProjectCarousel
+ * Front-end renderer using saved customPosts config.
+ */
+const ProjectCarousel = ({
+  title,
+  subtitle,
+  responsiveHeight,
+  theme,
+  customPosts,
+  slideTheme,
+  justify,
+}) => {
+  // Fetch posts based on customPosts config (select or auto)
+  const projects = useCustomPostsRecords(customPosts);
   const sliderRef = useRef(null);
 
+  // Reload slider when projects change
   useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await fetch('/wp-json/wp/v2/project?per_page=100&_embed');
-        const data = await response.json();
-        setProjects(data);
+    setTimeout(() => {
+      sliderRef.current?.reload?.();
+    }, 0);
+  }, [projects]);
 
-        // Important: allow next frame for React to apply setState
-        setTimeout(() => {
-          sliderRef.current?.reload?.();
-        }, 0);
-      } catch (error) {
-        console.error('Error fetching projects:', error);
-      }
-    };
+  if (!projects || projects.length === 0) {
+    return null;
+  }
 
-    fetchProjects();
-  }, []);
-
-  const displayedProjects = selectedProjects && selectedProjects.length > 0
-    ? selectedProjects
-      .map((id) => projects.find((project) => project.id === id))
-      .filter(Boolean)
-    : projects;
-
-  const projectSlides = displayedProjects.map((project) => {
+  const projectSlides = projects.map((project) => {
     const imageUrl = project?._embedded?.['wp:featuredmedia']?.[0]?.source_url || '';
     const projectTitle = project?.meta?._project_name || project?.title?.rendered || 'Untitled';
     const projectDescription = project?.meta?._project_description || '';
@@ -51,6 +51,15 @@ const ProjectCarousel = ({ title, subtitle, responsiveHeight, theme, selectedPro
     );
   });
 
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    adaptiveHeight: true,
+  };
+
   return (
     <section className={`projects-block ${theme} ${responsiveHeight}`}>
       <div className="container">
@@ -64,7 +73,7 @@ const ProjectCarousel = ({ title, subtitle, responsiveHeight, theme, selectedPro
               size="3.5em"
               color="var(--color-accent)"
               hoverColor="var(--color-accent-hover)"
-              disabled={false}
+              disabled={!projects.length}
             />
 
             <SliderPanel
@@ -74,6 +83,7 @@ const ProjectCarousel = ({ title, subtitle, responsiveHeight, theme, selectedPro
               minSpace={28}
               gap="24px"
               debug={false}
+              settings={settings}
             />
 
             <ArrowRight
@@ -81,13 +91,23 @@ const ProjectCarousel = ({ title, subtitle, responsiveHeight, theme, selectedPro
               size="3.5em"
               color="var(--color-accent)"
               hoverColor="var(--color-accent-hover)"
-              disabled={false}
+              disabled={!projects.length}
             />
           </div>
         </div>
       </div>
     </section>
   );
+};
+
+ProjectCarousel.propTypes = {
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  responsiveHeight: PropTypes.string,
+  theme: PropTypes.string,
+  customPosts: PropTypes.object.isRequired,
+  slideTheme: PropTypes.string,
+  justify: PropTypes.string,
 };
 
 export default ProjectCarousel;

@@ -1,0 +1,15 @@
+/* src/custom-posts-panel/CPTSelector.module.css */
+
+.wrapper {
+    /* you can add component-specific overrides here */
+  }
+  
+  .dropdown {
+    width: 100%;
+    font-size: 11px;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    background: #fff;
+  }
+  

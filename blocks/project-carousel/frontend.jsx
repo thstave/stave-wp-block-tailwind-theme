@@ -6,3 +6,4 @@ document.querySelectorAll('[data-block="project-carousel"]').forEach((el) => {
   const root = createRoot(el);
   root.render(<ProjectCarousel  {...attrs}/>);
 });
+

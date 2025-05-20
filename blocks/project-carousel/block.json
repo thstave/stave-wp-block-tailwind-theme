@@ -9,7 +9,8 @@
     "responsiveHeight": {"type": "string"},
     "theme": { "type": "string" },
     "slideTheme": { "type": "string" },
-    "justify": { "type": "string" }
+    "justify": { "type": "string" },
+    "customPosts": { "type": "object"}
   },
   "editorScript": "project-carousel-editor",
   "script": "project-carousel-frontend"

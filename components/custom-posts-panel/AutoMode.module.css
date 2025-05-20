@@ -1,0 +1,62 @@
+/* AutoMode.module.css */
+
+/* Wrapper around entire AutoMode section */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Mode selector (All vs Filtered) */
+  .modeSelector {
+    margin-bottom: 1rem;
+  }
+  .label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #222;
+  }
+  .select {
+    width: 100%;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    background: #fff;
+    font-size: 11px !important;
+  }
+  
+  /* Filter controls row when "Filtered" is active */
+  .filterControls {
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .filterControls select {
+    width: 25%;
+  }
+
+  .filterControls input {
+    width: 50%;
+  }
+  
+  .input {
+    flex: 2;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    font-size: 11px !important;
+  }
+  
+  /* Order controls at bottom */
+  .orderControls {
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+  }
+
+  .orderControls select {
+    width: 50%;
+  }
+  

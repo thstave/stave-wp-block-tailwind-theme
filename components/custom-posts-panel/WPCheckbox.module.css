@@ -1,0 +1,21 @@
+/* src/custom-posts-panel/WPCheckbox.module.css */
+
+/* Outer wrapper for spacing & font adjustments */
+.wrapper {
+    font-size: 11px;
+  }
+  
+  /* Make label flex to allow text wrap next to checkbox */
+  .wrapper .components-checkbox__label {
+    display: inline-flex;
+    align-items: flex-start;
+  }
+  
+  /* Customize the label text if needed */
+  .labelText {
+    /* flexes and wraps within available space */
+    flex: 1;
+    word-break: break-word;
+    margin-left: 0.25rem;
+  }
+  

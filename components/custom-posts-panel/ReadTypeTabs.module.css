@@ -1,0 +1,27 @@
+/* src/custom-posts-panel/ReadTypeTabs.module.css */
+
+/* Wrapper for the Select/Auto tabs */
+.wrapper {
+    /* global spacing and border-bottom come from cpt-panel__tabs */
+  }
+  
+  /* Individual tab button */
+  .tab {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem 0;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: #555;
+    font-weight: normal;
+    cursor: pointer;
+  }
+  
+  /* Modifier for the active tab */
+  .activeTab {
+    border-bottom-color: #007cba;
+    color: #007cba;
+    font-weight: bold;
+  }
+  

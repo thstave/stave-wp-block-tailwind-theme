@@ -1,13 +1,13 @@
 import React from 'react';
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, TextControl, SelectControl } from '@wordpress/components';
-import CPTSortableSelectControl from '../../components/CPTSortableSelectControl';
+import CustomPostsPanel from '../../components/CustomPostsPanel';
 import ProjectCarousel from './ProjectCarousel';
 import ThemeSelector from '../../components/ThemeSelector';
 import ResponsiveHeightSelector from '../../components/ResponsiveHeightSelector';
 
 const Edit = ({ attributes, setAttributes }) => {
-  const { title, subtitle, responsiveHeight, theme, slideTheme, justify } = attributes;
+  const { title, subtitle, responsiveHeight, theme, slideTheme, justify, customPosts } = attributes;
 
   const blockProps = useBlockProps({
     className: 'projects-block-edit'
@@ -43,12 +43,6 @@ const Edit = ({ attributes, setAttributes }) => {
             ]}
             onChange={(val) => setAttributes({ justify: val })}
           />
-          <CPTSortableSelectControl
-            postType="project"
-            label="Select and Order Projects"
-            value={attributes.selectedProjects}
-            onChange={(val) => setAttributes({ selectedProjects: val })}
-          />
 
           <ResponsiveHeightSelector
             value={responsiveHeight}
@@ -65,6 +59,15 @@ const Edit = ({ attributes, setAttributes }) => {
             onChange={(val) => setAttributes({ slideTheme: val })}
           />
 
+          <CustomPostsPanel
+            postType="project"
+            label="Featured Projects"
+            value={attributes.customPosts}
+            onChange={(newList) =>
+              setAttributes({ customPosts: newList })
+            }
+          />
+
         </PanelBody>
       </InspectorControls>
 
@@ -73,6 +76,7 @@ const Edit = ({ attributes, setAttributes }) => {
         subtitle={subtitle}
         responsiveHeight={responsiveHeight}
         theme={theme}
+        customPosts={customPosts}
         slideTheme={slideTheme}
         justify={justify}
       />

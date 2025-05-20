@@ -1,0 +1,36 @@
+/* src/custom-posts-panel/PostSelection.module.css */
+
+/* Wrapper around both add and order views */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Toggle button group for Add vs Order */
+  .toggleGroup {
+    margin-bottom: 1rem;
+  }
+  
+  /* Scrollable list for "Add Items" view */
+  .addList {
+    max-height: 40vh;
+    overflow-y: auto;
+    width: 100%;
+    /* Set text size for add list */
+    font-size: 11px;
+  }
+  
+  /* Add top margin for the first item in Add List */
+  .addList > :first-child {
+    margin-top: 0.5rem;
+  }
+  
+  /* Scrollable list for "Order Items" view */
+  .orderList {
+    max-height: 50vh;
+    overflow-y: auto;
+    width: 100%;
+    /* Set text size for order list */
+    font-size: 11px;
+  }
+  

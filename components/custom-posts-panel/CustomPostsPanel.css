@@ -1,0 +1,61 @@
+/* Shared styles for the CustomPostsPanel */
+
+/* Panel wrapper: base font-size for all child text */
+.cpt-panel {
+    font-size: 13px;
+    background: var(--wp-admin-theme-color-bg, #f9f9f9);
+    border-radius: 4px;
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+
+  .cpt-panel .components-panel__body.is-opened {
+    padding: .5rem;
+    background-color: #ADD8E6;
+  }
+  
+  /* Panel body spacing */
+  .cpt-panel__body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Generic field grouping */
+  .cpt-panel__field {
+    margin-bottom: 1rem;
+  }
+  
+  /* Labels applied across components */
+  .cpt-panel__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--wp-admin-theme-color-base, #222);
+  }
+  
+  /* Tabs row container */
+  .cpt-panel__tabs {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1rem;
+  }
+  
+  /* Individual tab button */
+  .cpt-panel__tab {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #555;
+    border-bottom: 2px solid transparent;
+  }
+  
+  /* Active tab modifier */
+  .cpt-panel__tab--active {
+    border-bottom-color: #007cba;
+    color: #007cba;
+    font-weight: bold;
+  }
+  
