@@ -1,0 +1,35 @@
+
+/* Introduction block */
+.intro-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: var(--color-background);
+}
+
+/* Inner container */
+.intro-block .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  max-width: 1300px;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+/* Title */
+.intro-title {
+  color: var(--color-text);
+}
+
+/* Subtitle */
+.intro-detail {
+  max-width: 800px;
+  color: var(--color-text);
+  text-align: center;
+}

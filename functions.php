@@ -36,6 +36,7 @@ add_theme_support('post-thumbnails');
 // Add editor theme
 add_theme_support('editor-styles');
 add_editor_style('editor-style.css');
+
 ?>
 
 

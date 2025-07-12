@@ -1,0 +1,15 @@
+{
+    "apiVersion": 2,
+    "name": "thstave/intro",
+    "title": "Intro Block",
+    "category": "design",
+    "attributes": {
+      "title": { "type": "string" },
+      "detail": { "type": "string" },
+      "responsiveHeight": {"type": "string"},
+      "theme": { "type": "string" }
+    },
+    "editorScript": "intro-editor",
+    "script": "intro-frontend"
+  }
+  
